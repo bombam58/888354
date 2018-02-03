@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+    function Search(){
+      var Data = document.getElementById("Data").value;
+      var word_search = document.getElementById("word").value;
+      var str = "Mr. Blue has a blue blue house"
+      var Choice = document.getElementsByName("sensitive");
+      var Choice_sensitive;
+      for (var i = 0; i < Choice.length; i++) {
+        if (Choice[i].checked) {
+          Choice_sensitive = Choice[i].value;
+        }
+      }
+      // alert(Choice_sensitive);
+      if(Choice_sensitive == null){
+        alert("Please Select Choice");
+      }else{
+    var re = new RegExp(word_search,'gi');
+    var r_sensitive = new RegExp(word_search,'g');
+    var res = Data.match(re);
+    var res_sensitive = Data.match(r_sensitive);
+
+      if(Choice_sensitive == "Sensitive"){
+        if(res_sensitive !== null) {
+          document.getElementById("result").innerHTML = res_sensitive.length;
+        }
+      }
+      else{
+        if(res !== null){
+          document.getElementById("result").innerHTML = res.length;
+        }
+      }
+    }
+
+    }
+
+    </script>
+  </head>
+  <body>
+    <center>
+    <h2>Ex2-Search String Non Sensitive Case</h2>
+    <hr>
+    Text Input: <textarea name="name" rows="8" cols="80" id="Data"></textarea> <br>
+    <p>Sensitive Case : <input type="radio" name="sensitive" value="Sensitive"> Yes
+                      <input type="radio" name="sensitive" value="NoSensitive"> No <br></p>
+<p>  Search : <input type="text" name="" value="" id="word"> <br></p>
+
+    <input type="button" name="" value="search" onclick="Search()">
+    <p>Result for search: <p id="result">
+
+    </p> </p>
+  </center>
+
+  </body>
+</html>
